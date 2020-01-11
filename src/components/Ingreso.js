@@ -1,4 +1,7 @@
 import React, {useRef, useState} from 'react'
+import {
+    Redirect
+  } from "react-router-dom";
 
 function Error(){
     return(<div className="error">
@@ -8,6 +11,7 @@ function Error(){
 
 function Ingreso() {
     const [error, setError] = useState(false)
+    const [linked, setLinked] = useState(false)
 
     const referencia =123;
     const documento = 123123123;
@@ -15,17 +19,24 @@ function Ingreso() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if(referenciaInput.current.value != referencia || docInput.current.value != documento){
-            console.log("error")
             setError(true)
+            setLinked(false)
         }
+        setLinked(true)
+        
+     
     }
 
     const validateError = ()=>{
         if(error){
-            return <Error/>
-        }
+            return <Error/>;
+        } 
 
-        return null;
+        if(!error && linked){
+            return <Redirect from="/" to="/resultado" />
+        }
+       
+        
     }
 
     const referenciaInput = useRef();
@@ -41,10 +52,7 @@ function Ingreso() {
                 <input className="formulario__input" type="text" placeholder="Documento" ref={docInput} />
                 <button onClick={handleSubmit} className="button button--primary button--center">Ingresar</button>
             </form>
-            
             {validateError()}
-
-            
 
         </div>
     )
