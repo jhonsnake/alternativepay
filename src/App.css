@@ -174,16 +174,21 @@ line-height: 20px;
 .button{
 padding:10px;  
 border-radius: 20px;
-min-width: 150px;
 font-family: 'Graphik-Semibold';
-
+background:white;
+transition: 0.3s;
 display: block;
 }
+
+.button:hover{
+  background:rgb(189, 190, 194);
+  }
 
 .button--primary{
   background: #4592FF;
   color:white;
   transition: 0.3s;
+  padding: 10px 35px;
 }
 
 .button--center{
@@ -192,9 +197,75 @@ display: block;
   margin-bottom: 40px;
 }
 
+.button--container{
+  display:flex;
+  justify-content: center;
+}
+
 .button--primary:hover{
   background: rgb(35, 87, 160);
-  font-family: ;
+  
+}
+
+.button--table{
+min-width: 80px;
+font-family: 'Graphik-Regular';
+}
+
+.table__title{
+font-family: 'Graphik-Semibold';
+font-size: 11px;
+color: #282F36;
+text-align: center;
+line-height: 20px;
+}
+
+.table__item{
+  font-size: 11px;
+  color: rgba(40,47,54,0.80);
+  line-height: 20px;
+  
+  margin-bottom: 5px;
+}
+
+.table-item--center{
+  text-align: center;
+}
+
+
+
+.icon--small{
+font-size: 1.2em;
+margin-top: -1px;
+padding-right: 2px;
+}
+.button__icon-container{
+  display:flex;
+  justify-content: center;
+}
+
+.total{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.total__list{
+  list-style: none;
+  display: flex;
+}
+
+.total__item{
+  padding: 10px;
+}
+
+.total__item button{
+  margin-top: -10px;
+}
+
+.total__item--primary{
+  color:#4592FF;
+  font-family: 'Graphik-Semibold';
 }
 
 @media (max-width: 480px) {
