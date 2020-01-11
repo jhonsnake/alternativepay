@@ -115,6 +115,13 @@ text-align: left;
 line-height: 25px;
 }
 
+.content__subtitle{
+  font-family: Graphik-Semibold;
+  font-size: .8em;
+  color:rgba(40,47,54,1);
+  margin-top:40px;
+}
+
 .content__extract{
 font-family: Graphik-Regular;
 font-size: 12px;

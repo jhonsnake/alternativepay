@@ -1,9 +1,10 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import {
     Redirect
   } from "react-router-dom";
 
 function Error(){
+    
     return(<div className="error">
         <p className="content__extract animated bounceInUp content--alert">¡Ha habido un error!, recuerda llenar todos los campos, Los datos ingresados no existen... Si estás en un entorno de pruebas intenta con la referencia:123, documento: 123123123</p>
     </div>)
@@ -13,6 +14,12 @@ function Ingreso() {
     const [error, setError] = useState(false)
     const [linked, setLinked] = useState(false)
 
+    useEffect(() => {
+        if(linked){
+            setError(false)
+        }
+      },[linked]);
+
     const referencia =123;
     const documento = 123123123;
 
@@ -21,8 +28,10 @@ function Ingreso() {
         if(referenciaInput.current.value != referencia || docInput.current.value != documento){
             setError(true)
             setLinked(false)
+        }else{
+
+            setLinked(true)
         }
-        setLinked(true)
         
      
     }
@@ -33,7 +42,7 @@ function Ingreso() {
         } 
 
         if(!error && linked){
-            return <Redirect from="/" to="/resultado" />
+            return <Redirect from="/" to="/resultado" /> 
         }
        
         
