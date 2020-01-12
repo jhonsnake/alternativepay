@@ -1,6 +1,10 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import PagoModal from "./modals/PagoModal";
+import DetalleModal from "./modals/DetalleModal"
+import PagosSeleccionadosModal from "./modals/PagoSeleccionadosModal"
+
 
 
 function Resultado() {
@@ -9,6 +13,8 @@ function Resultado() {
 
     const checkInput1 = useRef();
     const checkInput2 = useRef();
+
+
 
    function handleChange(e){
         
@@ -58,8 +64,8 @@ function Resultado() {
           <Td className="table__item table-item--center">2222</Td>
           <Td className="table__item table-item--center">2020 /02 /15</Td>
           <Td className="table__item table-item--center">2020 /02 /15</Td>
-          <Td className="table__item table-item--center"><button className="button button--primary button--table">Pagar</button></Td>
-          <Td className="table__item table-item--center"><button className="button"><div className="button__icon-container button--table"><i className="material-icons md-light icon--small">image_search</i>Detalles</div></button></Td>
+          <Td className="table__item table-item--center"><PagoModal valorApagar={a} resultado={true}/></Td>
+          <Td className="table__item table-item--center"><DetalleModal valorApagar={a} resultado={true} nombre="Detalles"/></Td>
           
         </Tr>
         
@@ -72,8 +78,8 @@ function Resultado() {
           <Td className="table__item table-item--center">2222</Td>
           <Td className="table__item table-item--center">2020 /02 /15</Td>
           <Td className="table__item table-item--center">2020 /02 /15</Td>
-          <Td className="table__item table-item--center"><button className="button button--primary button--table">Pagar</button></Td>
-          <Td className="table__item table-item--center"><button className="button"><div className="button__icon-container button--table"><i className="material-icons md-light icon--small">image_search</i>Detalles</div></button></Td>
+          <Td className="table__item table-item--center"><PagoModal valorApagar={b} resultado={false}/> </Td>
+          <Td className="table__item table-item--center"><DetalleModal valorApagar={b} resultado={false} nombre="Detalles"/></Td>
         </Tr>
       </Tbody>
    
@@ -81,7 +87,7 @@ function Resultado() {
     <div className="total">
           <ul className="total__list">
     <li className="total__item"><p className="total__item--primary">TOTAL COP {total}</p></li>
-              <li className="total__item"><button className="button button--primary">Pagar seleccionados</button></li>
+              <li className="total__item"><PagosSeleccionadosModal valorApagar={total} resultado={true}/></li>
           </ul>
       </div>
 
@@ -101,18 +107,19 @@ function Resultado() {
         <Tr>
           <Td className="table__item table-item--center">4444</Td>
           <Td className="table__item table-item--center">COP 300.000</Td>
-          <Td className="table__item table-item--center">Aprobado</Td>
-          <Td className="table__item table-item--center button--container"><button className="button"><div className="button__icon-container button--table"><i className="material-icons md-light icon--small">image_search</i>Resumen de pago</div></button></Td>
+          <Td className="table__item table-item--center table-item--success">Aprobado</Td>
+          <Td className="table__item table-item--center button--container"><DetalleModal valorApagar={300000} resultado={false} nombre="Detalles"/></Td>
         </Tr>
         <Tr>
           <Td className="table__item table-item--center">4444</Td>
-          <Td className="table__item table-item--center">COP 300.000</Td>
-          <Td className="table__item table-item--center">Aprobado</Td>
-          <Td className="table__item table-item--center button--container"><button className="button"><div className="button__icon-container button--table"><i className="material-icons md-light icon--small ">image_search</i>Resumen de pago</div></button></Td>
+          <Td className="table__item table-item--center ">COP 300.000</Td>
+          <Td className="table__item table-item--center table-item--alert">Rechazado</Td>
+          <Td className="table__item table-item--center button--container"><DetalleModal valorApagar={300000} resultado={false} nombre="Detalles"/></Td>
         </Tr>
       </Tbody>
    
     </Table>
+    
     </div>)
 
 }
